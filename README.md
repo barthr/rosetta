@@ -1,5 +1,5 @@
 # rosetta-snippets-cli
-cli application for rosetta
+cli application for rosetta, it opens the webpage from the search term and also goes to the specific language
 
 ```sh
 $ go get -u github.com/barthr/rosetta
