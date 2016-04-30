@@ -19,13 +19,6 @@ var (
 	languagePreference = "Go"
 )
 
-func setLanguagePreference(input string) {
-	languagePreference = strings.ToLower(input)
-	languagePreference = strings.ToUpper(string(languagePreference[0]))
-	os.Setenv(envVariable, languagePreference)
-
-}
-
 func main() {
 	executeCommand(os.Args[1:])
 }
@@ -35,6 +28,12 @@ func executeCommand(arg []string) {
 
 	case searchCmd:
 		items := <-repo // Wait for program to complete fetching the tasks
+		
+		if len(arg) == 1 {
+			printOptions(items)
+			return
+		}
+		
 		searchTerm := strings.ToLower(arg[1])
 
 		matches := matcher(items, searchTerm)
