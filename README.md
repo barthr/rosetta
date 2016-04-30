@@ -2,7 +2,7 @@
 cli application for rosetta
 
 ```sh
-$ go get -u github.com/barthr/rosetta-snippets-cli
+$ go get -u github.com/barthr/rosetta
 ```
 ### Example
 ```sh
