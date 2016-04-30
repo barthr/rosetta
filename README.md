@@ -1,4 +1,4 @@
-# rosetta-snippets-cli
+# Rosetta-snippets-cli
 cli application for rosetta, it opens the webpage from the search term and also goes to the specific language
 
 ```sh
