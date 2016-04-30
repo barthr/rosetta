@@ -1,5 +1,5 @@
 # Rosetta-snippets-cli
-cli application for rosetta, it opens the webpage from the search term and also goes to the specific language
+Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpage from the search term and also goes to the specific language
 
 ##NOTE -- Little sketchup and it actually works nice, but there is some code inside which doesn't work and is not that pretty, I made it in a few hours
 
