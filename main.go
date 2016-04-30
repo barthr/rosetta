@@ -16,13 +16,14 @@ const (
 
 var (
 	repo               = make(chan []string)
-	programmingTasks   = make([]string, 786)
 	languagePreference = "Go"
 )
 
 func setLanguagePreference(input string) {
 	languagePreference = strings.ToLower(input)
 	languagePreference = strings.ToUpper(string(languagePreference[0]))
+	os.Setenv(envVariable, languagePreference)
+
 }
 
 func main() {
@@ -48,8 +49,7 @@ func executeCommand(arg []string) {
 
 	case languageCmd:
 		inputLang := arg[1]
-		languagePreference = inputLang
-		os.Setenv(envVariable, languagePreference)
+		setLanguagePreference(inputLang)
 	}
 }
 
