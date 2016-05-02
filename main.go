@@ -6,23 +6,23 @@ import (
 	"strings"
 
 	"github.com/barthr/rosetta/fetcher"
+	"github.com/barthr/rosetta/settings"
 )
 
 const (
 	searchCmd   = "search"
 	languageCmd = "language"
-	envVariable = "rosetta-lang"
+	envVariable = "rosetta_lang"
 )
 
 var (
+	s                  = new(settings.User)
 	repo               = make(chan []string)
 	languagePreference = "Go"
 )
 
 func setLanguagePreference(input string) {
-	languagePreference = strings.ToLower(input)
-	languagePreference = strings.ToUpper(string(languagePreference[0]))
-	os.Setenv(envVariable, languagePreference)
+	os.Setenv(envVariable, input)
 
 }
 
@@ -32,9 +32,14 @@ func main() {
 
 func executeCommand(arg []string) {
 	switch arg[0] {
-
 	case searchCmd:
 		items := <-repo // Wait for program to complete fetching the tasks
+
+		if len(arg) == 1 {
+			printOptions(items)
+			return
+		}
+
 		searchTerm := strings.ToLower(arg[1])
 
 		matches := matcher(items, searchTerm)
@@ -45,11 +50,15 @@ func executeCommand(arg []string) {
 		var input int
 		fmt.Scanln(&input)
 
-		fetcher.OpenWebsite(matches[input], getLanguagePreference())
+		pref := s.ReadSettings()
+
+		fetcher.OpenWebsite(matches[input], pref.Language)
 
 	case languageCmd:
 		inputLang := arg[1]
-		setLanguagePreference(inputLang)
+		s.Language = inputLang
+
+		s.WriteSettings()
 	}
 }
 
