@@ -20,7 +20,6 @@ type User struct {
 func (u *User) WriteSettings() {
 	// create a file
 	dataFile, err := os.Create("settings.gob")
-
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -52,7 +51,7 @@ func (u *User) ReadSettings() User {
 	dataFile, err := os.Open("settings.gob")
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("Set ur default language first!")
 		os.Exit(1)
 	}
 

@@ -60,6 +60,10 @@ func GetProgrammingTasks() ([]string, error) {
 // OpenWebsite Formats the url to open with the browser
 // Open's the browser with the url
 func OpenWebsite(url, defaultLang string) {
-	runnable := fmt.Sprintf(selectionURL, url, defaultLang)
-	open.Run(runnable)
+	open.Run(WebsiteURL(url, defaultLang))
+}
+
+// WebsiteURL returns the formatted URL
+func WebsiteURL(url, defaultLang string) string {
+	return fmt.Sprintf(selectionURL, url, defaultLang)
 }
