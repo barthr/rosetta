@@ -14,7 +14,7 @@ rosetta search hello
 
 ### OR
 ```sh
-rosetta search -o java hello
+rosetta search -l java hello
 ```
 
 
