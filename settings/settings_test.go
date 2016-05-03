@@ -2,6 +2,7 @@ package settings
 
 import (
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -31,4 +32,14 @@ func TestDeleteSettings(t *testing.T) {
 	}
 	user.DeleteSettings()
 
+}
+
+func TestToUpperCaseFirst(t *testing.T) {
+	t.Log("Testing first letter uppercase")
+	input := ToUpperCaseFirst("go")
+	expected := "Go"
+
+	if strings.Compare(input, expected) != 0 {
+		t.FailNow()
+	}
 }
