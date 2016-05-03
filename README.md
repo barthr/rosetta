@@ -15,7 +15,6 @@ $ go get github.com/barthr/rosetta
 rosetta search hello
 ```
 
-### OR
 Search on hello with language java and open <INSERT WEB BROWSER HERE> 
 ```sh
 rosetta search -l java hello
