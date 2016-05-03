@@ -25,7 +25,8 @@ func (u *User) WriteSettings() {
 		os.Exit(1)
 	}
 
-	u.toUpperCase()
+	u.Language = ToUpperCaseFirst(u.Language)
+
 	fmt.Println(u.Language)
 	// serialize the data
 	dataEncoder := gob.NewEncoder(dataFile)
@@ -34,10 +35,11 @@ func (u *User) WriteSettings() {
 	dataFile.Close()
 }
 
-func (u *User) toUpperCase() {
-	chars := []rune(u.Language)
+// ToUpperCaseFirst takes a string and Uppercases the first Letter
+func ToUpperCaseFirst(language string) string {
+	chars := []rune(language)
 	chars[0] = unicode.ToUpper(chars[0])
-	u.Language = string(chars)
+	return string(chars)
 }
 
 // ReadSettings reads the 'settings.gob' file from disk

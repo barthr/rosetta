@@ -85,33 +85,33 @@ func languageCommand(c *cli.Context) {
 func searchCommand(c *cli.Context) {
 	items := <-repo // Wait for program to complete fetching the tasks
 
-	if c.NArg() > 0 { //Check if args are provided
+	if c.NArg() > 0 { // Check if args are provided
 
-		args := c.Args()[0] //Search term
+		args := c.Args()[0] // Search term
 
-		var searchInput string // Placeholder for the language where will be returned with
+		var searchInput string // Placeholder for the language to be returned with
 
-		matches := match(items, args)
+		matches := match(items, args) // Match the search term against the items from Rosetta
 
-		printOptions(matches)
+		printOptions(matches) // Print the correspondending options
 
-		pref := s.ReadSettings()
-		searchInput = pref.Language
-
-		input := getSelectionFromUser()
-
-		for !validIndex(input, matches) {
-			fmt.Println("U cannot choose a number which is not in the list")
-			input = getSelectionFromUser()
+		if len(c.String("l")) > 0 { // If the there is a -l provided, than use that search term instead of the one from the settings
+			searchInput = settings.ToUpperCaseFirst(searchLang)
+		} else {
+			pref := s.ReadSettings()
+			searchInput = pref.Language
 		}
 
-		if c.Bool("r") {
+		input := getSelectionFromUser() // Get the input selection from the user, which of the tasks he selects
+
+		for !validIndex(input, matches) { // Check if user selects something valid
+			fmt.Println("U cannot choose a number which is not in the list")
+			input = getSelectionFromUser() // Retry
+		}
+
+		if c.Bool("r") { // if -r flag is provided than do not open the webpage but only return the url
 			fmt.Println(fetcher.WebsiteURL(matches[input], searchInput))
 			return
-		}
-
-		if len(c.String("l")) > 0 {
-			searchInput = searchLang
 		}
 
 		fetcher.OpenWebsite(matches[input], searchInput)
