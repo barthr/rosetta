@@ -47,6 +47,7 @@ func GetProgrammingTasks() ([]string, error) {
 	return tasks, nil
 }
 
+// CacheContent caches the tasks array
 func CacheContent(tasks *[]string) {
 	// create a file
 	dataFile, err := os.Create("cache.gob")
@@ -62,6 +63,7 @@ func CacheContent(tasks *[]string) {
 	dataFile.Close()
 }
 
+// GetCache reads the cache.gob file
 func GetCache() (tasks []string, err error) {
 	// open data file
 	dataFile, err := os.Open("cache.gob")
