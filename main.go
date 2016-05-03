@@ -129,7 +129,7 @@ func getSelectionFromUser() int {
 }
 
 // validIndex takes the absolute value of the index
-// The absolute value gets checked against the lenght of the options
+// The absolute value gets checked against the length of the options
 // By using math.Abs from the std lib, no negatives allowed
 func validIndex(index int, options []string) bool {
 	if int(math.Abs(float64(index))) > len(options) {
