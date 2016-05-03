@@ -1,9 +1,7 @@
 package fetcher
 
 import (
-	"errors"
 	"fmt"
-	"regexp"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/skratchdot/open-golang/open"
@@ -23,16 +21,6 @@ func getTasks() error {
 
 	if err != nil {
 		return err
-	}
-
-	// Regex to check if the page is valid
-	// Todo Check for statuscode (way faster & easier)
-	r := regexp.MustCompile("currently no text in this page")
-
-	// Match the block where the page returns not found
-	if r.MatchString(page.Find(".noarticletext").Text()) {
-		// If there is a match the URL is not valid anymore
-		return errors.New("The used Url for getting categories doesn't exist anymore")
 	}
 
 	elements := page.Find(".mw-category-group").Find("ul").Find("li")
