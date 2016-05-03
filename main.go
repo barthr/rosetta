@@ -183,7 +183,7 @@ func init() {
 	go func() {
 		categoryOutput, err := fetcher.GetProgrammingTasks()
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("Couldn't fetch the tasks")
 			return
 		}
 		repo <- categoryOutput
