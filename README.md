@@ -12,10 +12,36 @@ $ go get github.com/barthr/rosetta
 
 ## Examples
 
-**Search on hello with the language from settings**
+
+### Settings 
+
+**Setting a default language**
 ```sh
-rosetta search hello
+rosetta language Go
 ```
+
+
+**Displaying ur current settings**
+```sh
+rosetta settings
+```
+
+**Reset settings**
+```sh
+rosetta reset
+```
+
+
+### Flags
+
+```sh
+    search:
+        -r : only return url
+        -l : specify language (overrides the default language)
+```
+
+
+### Search
 
 **Search on hello with language java and open Web browser**
 ```sh
@@ -31,12 +57,6 @@ rosetta search -l java -r hello
 ```sh
 rosetta search -r hello
 ```
-
-**Reset settings**
-```sh
-rosetta reset
-```
-
 
 After entering the search u will be prompted to choose one from the selection
 

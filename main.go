@@ -1,3 +1,5 @@
+// Rosetta is a CLI application for interacting with rosettacode.org
+// Can be used as a backend for a plugin for any text editor
 package main
 
 import (
@@ -17,6 +19,7 @@ var (
 	searchLang string
 )
 
+// Run
 func main() {
 	app := cli.NewApp()
 
@@ -61,27 +64,40 @@ func main() {
 	app.Run(os.Args)
 }
 
+// showCommand is the handler for the settings filter
+// Display current user settings in the terminal
 func showCommand(c *cli.Context) {
 	settings := s.ReadSettings()
 	fmt.Printf("UR SETTINGS:\n    Search language: %s", settings.Language)
 }
 
+// removeCommand is the handler for the reset filter
+// removeCommand delete's all the settings
+// Closes the application with succes when the settings are deleted
 func removeCommand(c *cli.Context) {
 	s.DeleteSettings()
 	fmt.Println("Deleted Settings!")
 	os.Exit(0)
 }
 
+// languageCommand is the handler for langauge filter
+// if there are enough arguments provided the language will be set in the settings
+// Stops the application with succes when the langauge is set
+// Stops the application with exit(13) when the input is invalid
 func languageCommand(c *cli.Context) {
 	if c.NArg() > 0 {
 		s.Language = c.Args()[0]
 		s.WriteSettings()
-		return
+		os.Exit(0)
 	}
 	fmt.Println("Please provide a language!")
 	os.Exit(13)
 }
 
+// searchCommand is the handler for the search filter from the cli
+// the function waits for the background task to finish and then processes the options
+// it also checks for the provided flags and apply the rules
+// will either open a website or return an URL (depends on flag)
 func searchCommand(c *cli.Context) {
 	items := <-repo // Wait for program to complete fetching the tasks
 
