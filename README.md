@@ -10,15 +10,35 @@ Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpa
 $ go get github.com/barthr/rosetta
 ```
 
-### Example
+### Examples
 ```sh
-rosetta language java
 rosetta search hello
 ```
 
 ### OR
+Search on hello with language java and open <INSERT WEB BROWSER HERE> 
 ```sh
 rosetta search -l java hello
+```
+
+Search on hello with language java and return the url
+```sh
+rosetta search -l java -r hello
+```
+
+Search on hello with default language settings and only return the url
+```sh
+rosetta search -r hello
+```
+
+Reset settings
+```sh
+rosetta reset
+```
+
+Search on hello with the language from settings 
+```sh
+rosetta search hello
 ```
 
 
