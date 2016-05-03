@@ -35,9 +35,9 @@ rosetta reset
 ### Flags
 
 ```sh
-    search:
-        -r : only return url
-        -l : specify language (overrides the default language)
+search:
+   -r : only return url
+   -l : specify language (overrides the default language)
 ```
 
 
