@@ -60,6 +60,5 @@ rosetta search -r hello
 
 After entering the search u will be prompted to choose one from the selection
 
-
-### Work in progress
-- Caching
+### Extra information
+- Rosetta caches the searches!
