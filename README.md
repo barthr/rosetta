@@ -1,7 +1,7 @@
 # Rosetta-snippets-cli
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/barthr/rosetta)](https://goreportcard.com/report/github.com/barthr/rosetta)
-[![Build Status](https://travis-ci.org/barthr/rosetta.svg?branch=master)](https://travis-ci.org/barthr/rosetta)
+
 
 Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpage or returns the url from the search term and also goes to the specific language
 
