@@ -12,6 +12,12 @@ rosetta language java
 rosetta search hello
 ```
 
+### OR
+```sh
+rosetta search -o java hello
+```
+
+
 After entering the search u will be prompted to choose one from the selection
 
 
