@@ -1,7 +1,9 @@
 package fetcher
 
 import (
+	"encoding/gob"
 	"fmt"
+	"os"
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/skratchdot/open-golang/open"
@@ -42,6 +44,40 @@ func GetProgrammingTasks() ([]string, error) {
 		}
 		return nil, err
 	}
+	return tasks, nil
+}
+
+func CacheContent(tasks *[]string) {
+	// create a file
+	dataFile, err := os.Create("cache.gob")
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	// serialize the data
+	dataEncoder := gob.NewEncoder(dataFile)
+	dataEncoder.Encode(tasks)
+
+	dataFile.Close()
+}
+
+func GetCache() (tasks []string, err error) {
+	// open data file
+	dataFile, err := os.Open("cache.gob")
+
+	if err != nil {
+		return nil, err
+	}
+
+	dataDecoder := gob.NewDecoder(dataFile)
+	err = dataDecoder.Decode(&tasks)
+
+	if err != nil {
+		return nil, err
+	}
+
+	dataFile.Close()
 	return tasks, nil
 }
 

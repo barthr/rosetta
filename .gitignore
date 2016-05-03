@@ -4,3 +4,4 @@ out
 gen
 settings.gob
 *.exe
+*.gob

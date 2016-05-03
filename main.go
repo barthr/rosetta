@@ -99,7 +99,11 @@ func languageCommand(c *cli.Context) {
 // it also checks for the provided flags and apply the rules
 // will either open a website or return an URL (depends on flag)
 func searchCommand(c *cli.Context) {
-	items := <-repo // Wait for program to complete fetching the tasks
+	items, err := fetcher.GetCache()
+
+	if err != nil {
+		items = <-repo // Wait for program to complete fetching the tasks
+	}
 
 	if c.NArg() > 0 { // Check if args are provided
 
@@ -186,6 +190,7 @@ func init() {
 			fmt.Println("Couldn't fetch the tasks")
 			return
 		}
+		fetcher.CacheContent(&categoryOutput)
 		repo <- categoryOutput
 	}()
 }
