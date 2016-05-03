@@ -15,27 +15,27 @@ $ go get github.com/barthr/rosetta
 rosetta search hello
 ```
 
-Search on hello with language java and open <INSERT WEB BROWSER HERE> 
+**Search on hello with language java and open <INSERT WEB BROWSER HERE>**
 ```sh
 rosetta search -l java hello
 ```
 
-Search on hello with language java and return the url
+**Search on hello with language java and return the url**
 ```sh
 rosetta search -l java -r hello
 ```
 
-Search on hello with default language settings and only return the url
+**Search on hello with default language settings and only return the url**
 ```sh
 rosetta search -r hello
 ```
 
-Reset settings
+**Reset settings**
 ```sh
 rosetta reset
 ```
 
-Search on hello with the language from settings 
+**Search on hello with the language from settings**
 ```sh
 rosetta search hello
 ```
