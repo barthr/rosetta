@@ -1,7 +1,6 @@
 # Rosetta-snippets-cli
-Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpage from the search term and also goes to the specific language
+Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpage or returns the url from the search term and also goes to the specific language
 
-##NOTE -- Little sketchup and it actually works nice, but there is some code inside which doesn't work and is not that pretty, I made it in a few hours
 
 ```sh
 $ go get github.com/barthr/rosetta
@@ -9,12 +8,18 @@ $ go get github.com/barthr/rosetta
 
 ### Example
 ```sh
+rosetta language java
 rosetta search hello
 ```
+
+### OR
+```sh
+rosetta search -l java hello
+```
+
 
 After entering the search u will be prompted to choose one from the selection
 
 
 ### Work in progress
-- Adding language support (almost done not working good yet)
 - Caching
