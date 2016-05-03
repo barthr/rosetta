@@ -10,7 +10,9 @@ Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpa
 $ go get github.com/barthr/rosetta
 ```
 
-### Examples
+## Examples
+
+**Search on hello with the language from settings**
 ```sh
 rosetta search hello
 ```
@@ -33,11 +35,6 @@ rosetta search -r hello
 **Reset settings**
 ```sh
 rosetta reset
-```
-
-**Search on hello with the language from settings**
-```sh
-rosetta search hello
 ```
 
 
