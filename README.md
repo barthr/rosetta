@@ -1,5 +1,5 @@
 # Rosetta-snippets-cli
-Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpage from the search term and also goes to the specific language
+Cli application for http://rosettacode.org/wiki/Rosetta_Code, it opens the webpage or returns the url from the search term and also goes to the specific language
 
 
 ```sh
