@@ -48,7 +48,7 @@ func GetProgrammingTasks() ([]string, error) {
 }
 
 // CacheContent caches the tasks array
-func CacheContent(tasks *[]string) {
+func CacheContent(tasks []string) {
 	// create a file
 	dataFile, err := os.Create("cache.gob")
 	if err != nil {

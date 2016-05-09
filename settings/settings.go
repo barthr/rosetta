@@ -32,7 +32,7 @@ func (u *User) WriteSettings() {
 	dataEncoder := gob.NewEncoder(dataFile)
 	dataEncoder.Encode(u)
 
-	dataFile.Close()
+	defer dataFile.Close()
 }
 
 // ToUpperCaseFirst takes a string and Uppercases the first Letter
@@ -65,7 +65,7 @@ func (u *User) ReadSettings() User {
 		os.Exit(1)
 	}
 
-	dataFile.Close()
+	defer dataFile.Close()
 
 	return data
 }

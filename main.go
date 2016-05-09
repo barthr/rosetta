@@ -187,10 +187,10 @@ func init() {
 	go func() {
 		categoryOutput, err := fetcher.GetProgrammingTasks()
 		if err != nil {
-			fmt.Println("Couldn't fetch the tasks")
-			return
+			fmt.Println("Couldn't fetch the tasks because the dial lookup didn't work. Check ur internet connection")
+			os.Exit(1)
 		}
-		fetcher.CacheContent(&categoryOutput)
+		fetcher.CacheContent(categoryOutput)
 		repo <- categoryOutput
 	}()
 }
